@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import { about, headings } from "@/lib/content";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { Container, Meta, Section, SectionHeading } from "@/components/ui";
 import { Reveal, WipeIn } from "@/components/motion-primitives";
 
@@ -34,13 +33,10 @@ export function About() {
       <Container className="mt-12 md:mt-16">
         <WipeIn>
           <div className="relative mx-auto aspect-[1080/1384] w-full max-w-2xl overflow-hidden rounded-media bg-raised">
-            <Image
+            <ImageLightbox
               src={about.image}
               alt={about.imageAlt}
-              fill
               sizes="(max-width: 768px) 100vw, 672px"
-              unoptimized
-              className="object-contain"
             />
           </div>
         </WipeIn>

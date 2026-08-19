@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Image from "next/image";
 
 import { isVideo } from "@/lib/layout";
+import { ImageLightbox } from "@/components/image-lightbox";
 import { useMotionEnabled, WipeIn } from "@/components/motion-primitives";
 
 /**
@@ -83,14 +83,11 @@ export function ProjectMedia({
 
   return (
     <WipeIn className={shell}>
-      <Image
+      <ImageLightbox
         src={src}
         alt={`${title} preview`}
-        fill
         priority={priority}
         sizes={sizes}
-        unoptimized
-        className="object-contain"
       />
     </WipeIn>
   );
