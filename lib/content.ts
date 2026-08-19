@@ -41,9 +41,9 @@ export const socials = [
  *  from the nav; the section stays on the page.
  * ---------------------------------------------------------------------- */
 export const nav = [
+  { id: "top", label: "About" },
   { id: "experience", label: "Experience" },
   { id: "work", label: "Work" },
-  { id: "about", label: "About" },
   { id: "stack", label: "Stack" },
 ];
 
@@ -51,7 +51,6 @@ export const nav = [
 export const headings = {
   work: "Selected work",
   experience: "Experience",
-  about: "About",
   stack: "Stack",
 };
 
@@ -227,32 +226,7 @@ export const experience: Job[] = [
 ];
 
 /* -------------------------------------------------------------------------
- *  6. ABOUT
- * ---------------------------------------------------------------------- */
-export const about = {
-  body: [
-    "I am finishing an MS in Computer Science at Indiana University Bloomington, where I also run the teaching assistant team for the JavaScript and Python/Flask courses. Before graduate school I spent two years building Next.js products for clients and a year at Accenture on enterprise React and Node services.",
-    "Most of what I have shipped has been full-stack product work on a deadline, for people who noticed when it broke.",
-  ],
-  /** Lives in public/me/. Full-width band between the text and education. */
-  image: "/me/candid.jpeg",
-  imageAlt: "Akshay Viswanath outdoors with a camera",
-  education: [
-    {
-      degree: "MS, Computer Science",
-      org: "Indiana University Bloomington",
-      period: "2024 - 2026",
-    },
-    {
-      degree: "BE, Computer Science",
-      org: "P.E.S. College of Engineering",
-      period: "2017 - 2021",
-    },
-  ],
-};
-
-/* -------------------------------------------------------------------------
- *  7. STACK
+ *  6. STACK
  *  Plain lists, no badges. Add, remove or rename groups freely.
  * ---------------------------------------------------------------------- */
 export const stack = [
@@ -292,7 +266,7 @@ export const stack = [
 ];
 
 /* -------------------------------------------------------------------------
- *  8. CONTACT
+ *  7. CONTACT
  *  The email is the headline. There is nothing else to say here.
  * ---------------------------------------------------------------------- */
 export const contact = {
