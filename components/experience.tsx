@@ -34,7 +34,8 @@ export function Experience() {
                   {/* Work that is still live gets a link. Nothing renders for
                       roles that have none. */}
                   {job.links ? (
-                    <div className="flex flex-wrap gap-x-6 gap-y-2">
+                    <div className="flex flex-wrap items-baseline gap-x-6 gap-y-2">
+                      <span className="text-sm font-medium text-fg">My work:</span>
                       {job.links.map(({ label, href }) => (
                         <TextLink key={href} href={href}>
                           {label}

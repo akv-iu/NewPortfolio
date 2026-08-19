@@ -155,7 +155,7 @@ export function Hero() {
 
         <div className="mt-12 grid gap-10 border-t border-line pt-8 md:grid-cols-12 md:gap-8">
           <p
-            className="rise-in max-w-[42ch] text-base leading-relaxed text-muted md:col-span-6 md:text-lg"
+            className="rise-in max-w-[58ch] text-base leading-relaxed text-muted md:col-span-6 md:text-lg"
             style={{ animationDelay: "0.38s" }}
           >
             {hero.standfirst}

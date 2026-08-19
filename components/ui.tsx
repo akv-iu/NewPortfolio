@@ -135,13 +135,10 @@ export function TextLink({
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel="noopener noreferrer"
-      className="group/link relative inline-block text-sm text-muted transition-colors duration-200 ease-[var(--ease-out)] hover:text-fg"
+      className="inline-block text-sm text-fg underline underline-offset-4 transition-colors duration-200 ease-[var(--ease-out)] hover:text-muted"
     >
       {children}
-      <span
-        aria-hidden
-        className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-fg transition-transform duration-300 ease-[var(--ease-out)] [@media(hover:hover)]:group-hover/link:scale-x-100"
-      />
+      {isExternal ? <span aria-hidden> ↗</span> : null}
     </a>
   );
 }

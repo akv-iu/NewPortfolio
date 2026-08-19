@@ -57,19 +57,20 @@ export const headings = {
 /* -------------------------------------------------------------------------
  *  3. HERO
  *  Leads with the name, the way a printed masthead would. `standfirst` is
- *  the one factual sentence under it. Keep it under about 25 words.
+ *  the short factual summary under it.
  * ---------------------------------------------------------------------- */
 export const hero = {
   /** Rendered as the display type. Each string is one line. */
   name: ["Akshay", "Viswanath"],
   standfirst:
-    "Software engineer. Full-stack, with a bias toward the backend. Nearly three years shipping to production before graduate school.",
+    "Software engineer with nearly three years of experience building backend and full-stack systems from architecture to production. I’ve shipped client platforms, enterprise Node.js APIs, and agentic AI systems for secure tool authorization and evidence-grounded retrieval.",
   /** Two short factual rows in the masthead. Delete either one. */
   meta: [
     { label: "Based in", value: "Salt lake City, Utah" },
     { label: "Graduate", value: "MS Computer Science, Indiana University" },
   ],
-  available: "Open to new grad software engineering roles",
+  available:
+    "Open to software, applied AI, and forward-deployed engineering roles",
   primaryCta: { label: "See the work", href: "#work" },
   secondaryCta: { label: "Resume", href: site.resume },
   /** Lives in public/me/. Swap the file or point this somewhere else. */
@@ -271,5 +272,5 @@ export const stack = [
  * ---------------------------------------------------------------------- */
 export const contact = {
   label: "Get in touch",
-  body: "Open to new grad software engineering roles from May 2026. Full-stack, backend or mobile.",
+  body: "Available May 2026 for software engineering, applied AI engineering, and forward-deployed engineering roles.",
 };

@@ -1,26 +1,25 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from "next/font/google";
+import { Bricolage_Grotesque, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 
 import { site } from "@/lib/content";
 import "./globals.css";
 
-/* Three families, the way print does it: one for display, one for reading,
-   one for data. Deliberately not Geist, which ships with create-next-app and
-   reads as "generated". */
+/* Expressive display, technical body, monospace data. */
 const display = Bricolage_Grotesque({
   variable: "--font-bricolage",
   subsets: ["latin"],
   display: "swap",
 });
 
-const sans = Instrument_Sans({
-  variable: "--font-instrument",
+const sans = IBM_Plex_Sans({
+  variable: "--font-plex-sans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const mono = JetBrains_Mono({
-  variable: "--font-jetbrains",
+const mono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  weight: ["400", "500"],
   subsets: ["latin"],
   display: "swap",
 });
