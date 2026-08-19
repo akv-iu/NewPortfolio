@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">Kaggriculture evidence-first optimization loop</title>
+  <desc id="desc">A scheduled evidence poll leads to a human-approved proposal, deterministic backtest, and guarded Kaggle submission.</desc>
+  <defs>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.7" fill="#d6dce1"/></pattern>
+    <marker id="arrow" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#294c73"/></marker>
+    <marker id="arrowAccent" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#ef6847"/></marker>
+    <style>
+      .eyebrow{font:600 25px Consolas,monospace;letter-spacing:5px;fill:#31577f}.headline{font:500 68px Georgia,serif;letter-spacing:-2px;fill:#142a45}.dek{font:28px Arial,sans-serif;fill:#49627f}.step{font:700 22px Consolas,monospace;letter-spacing:2px;fill:#31577f}.lane{font:600 28px Consolas,monospace;letter-spacing:5px;fill:#31577f}.nodeTitle{font:700 29px Arial,sans-serif;fill:#172b44}.nodeBody{font:22px Consolas,monospace;fill:#607286}.tag{font:700 18px Consolas,monospace;letter-spacing:2px;fill:#31577f}.legend{font:22px Arial,sans-serif;fill:#566b82}.legendLabel{font:600 22px Consolas,monospace;letter-spacing:3px;fill:#31577f}
+    </style>
+  </defs>
+  <rect width="2560" height="1440" fill="#f5f3ed"/>
+  <text x="180" y="105" class="eyebrow">DATA FLOW · KAGGRICULTURE</text>
+  <text x="180" y="185" class="headline">Evidence-First Optimization Loop</text>
+  <text x="180" y="240" class="dek">One falsifiable patch at a time, gated by human review and a deterministic backtest.</text>
+
+  <g transform="translate(610 300)">
+    <g transform="translate(0)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">01</text><text x="43" y="72" text-anchor="middle" class="step">POLL</text></g>
+    <g transform="translate(340)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">02</text><text x="43" y="72" text-anchor="middle" class="step">ARM</text></g>
+    <g transform="translate(680)"><rect width="86" height="40" rx="20" fill="#ffe1d7"/><text x="43" y="27" text-anchor="middle" class="step" style="fill:#ef6847">03</text><text x="43" y="72" text-anchor="middle" class="step" style="fill:#ef6847">PROPOSE</text></g>
+    <g transform="translate(1020)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">04</text><text x="43" y="72" text-anchor="middle" class="step">REVIEW</text></g>
+    <g transform="translate(1360)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">05</text><text x="43" y="72" text-anchor="middle" class="step">VERIFY</text></g>
+    <g transform="translate(1700)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">06</text><text x="43" y="72" text-anchor="middle" class="step">SUBMIT</text></g>
+  </g>
+
+  <rect x="180" y="405" width="2200" height="255" fill="#eef0f1" opacity=".72"/>
+  <rect x="180" y="660" width="2200" height="310" fill="url(#dots)" opacity=".68"/>
+  <rect x="180" y="970" width="2200" height="250" fill="#eef0f1" opacity=".72"/>
+  <path d="M180 405H2380M180 660H2380M180 970H2380M180 1220H2380M500 405V1220" stroke="#c5ccd3" stroke-width="2"/>
+  <text x="330" y="515" text-anchor="middle" class="lane"><tspan x="330">TASK</tspan><tspan x="330" dy="44">SCHEDULER</tspan></text>
+  <text x="330" y="780" text-anchor="middle" class="lane"><tspan x="330">AKSHAY</tspan><tspan x="330" dy="44">(HUMAN)</tspan></text>
+  <text x="330" y="1065" text-anchor="middle" class="lane"><tspan x="330">LOCAL</tspan><tspan x="330" dy="44">VERIFIER</tspan></text>
+
+  <g transform="translate(550 455)">
+    <rect width="330" height="155" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">SCH</text>
+    <text x="165" y="79" text-anchor="middle" class="nodeTitle">Poll + Evidence</text>
+    <text x="165" y="119" text-anchor="middle" class="nodeBody">every 4h · new replays</text>
+    <text x="165" y="147" text-anchor="middle" class="nodeBody">Poll · loop.py</text>
+  </g>
+  <g transform="translate(890 720)">
+    <rect width="330" height="165" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">YOU</text>
+    <text x="165" y="85" text-anchor="middle" class="nodeTitle">Arm Plan</text>
+    <text x="165" y="125" text-anchor="middle" class="nodeBody">consume evidence once</text>
+    <text x="165" y="153" text-anchor="middle" class="nodeBody">ArmPlan flag</text>
+  </g>
+  <g transform="translate(1240 520)">
+    <rect width="330" height="170" rx="12" fill="#fff7f2" stroke="#ef6847" stroke-width="4"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#ffe0d5"/><text x="34" y="43" class="tag" style="fill:#ef6847">LLM</text>
+    <text x="165" y="86" text-anchor="middle" class="nodeTitle">Propose Patch</text>
+    <text x="165" y="128" text-anchor="middle" class="nodeBody">no tools · ≤6 turns</text>
+    <text x="165" y="158" text-anchor="middle" class="nodeBody">Sonnet · medium</text>
+  </g>
+  <g transform="translate(1580 720)">
+    <rect width="330" height="165" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">YOU</text>
+    <text x="165" y="85" text-anchor="middle" class="nodeTitle">Approve / Reject</text>
+    <text x="165" y="125" text-anchor="middle" class="nodeBody">read diff + hypothesis</text>
+    <text x="165" y="153" text-anchor="middle" class="nodeBody">ApprovePlan</text>
+  </g>
+  <g transform="translate(1870 1015)">
+    <rect width="330" height="155" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">SIM</text>
+    <text x="165" y="79" text-anchor="middle" class="nodeTitle">Backtest</text>
+    <text x="165" y="119" text-anchor="middle" class="nodeBody">12 seeds · auto rollback</text>
+    <text x="165" y="147" text-anchor="middle" class="nodeBody">verify.py</text>
+  </g>
+  <g transform="translate(2120 720)">
+    <rect width="260" height="165" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">YOU</text>
+    <text x="130" y="85" text-anchor="middle" class="nodeTitle">Submit</text>
+    <text x="130" y="125" text-anchor="middle" class="nodeBody">upload to Kaggle</text>
+    <text x="130" y="153" text-anchor="middle" class="nodeBody">SubmitCandidate</text>
+  </g>
+
+  <path d="M715 610V802H890" fill="none" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M1220 802H1405V690" fill="none" stroke="#ef6847" stroke-width="5" marker-end="url(#arrowAccent)"/>
+  <text x="1250" y="770" class="step" style="fill:#ef6847">NO TOOLS</text>
+  <path d="M1570 605H1745V720" fill="none" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M1745 885V930H2035V1015" fill="none" stroke="#294c73" stroke-width="4" stroke-dasharray="12 10" marker-end="url(#arrow)"/>
+  <path d="M2200 1090H2250V885" fill="none" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <g transform="translate(500 1285)">
+    <text x="0" y="25" class="legendLabel">FLOW</text>
+    <path d="M170 18H240" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/><text x="265" y="25" class="legend">Standard handoff</text>
+    <path d="M650 18H720" stroke="#294c73" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrow)"/><text x="745" y="25" class="legend">Approval gate</text>
+    <path d="M1070 18H1140" stroke="#ef6847" stroke-width="4" marker-end="url(#arrowAccent)"/><text x="1165" y="25" class="legend">Focal proposal</text>
+    <text x="0" y="105" class="legendLabel">GUARDRAILS</text>
+    <circle cx="230" cy="98" r="13" fill="#31577f"/><text x="260" y="105" class="legend">Read-only evidence</text>
+    <circle cx="650" cy="98" r="13" fill="#ef6847"/><text x="680" y="105" class="legend">One patch</text>
+    <circle cx="980" cy="98" r="13" fill="#a45d47"/><text x="1010" y="105" class="legend">Human approval</text>
+    <circle cx="1430" cy="98" r="13" fill="#4c8b63"/><text x="1460" y="105" class="legend">Backtest + rollback</text>
+  </g>
+</svg>

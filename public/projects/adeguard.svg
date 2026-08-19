@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">ADEGuard grounded adverse-event search architecture</title>
+  <desc id="desc">VAERS reports feed a FAISS semantic index and Neo4j knowledge graph. Retrieved evidence is fused before a local LLaMA model answers or refuses.</desc>
+  <defs>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.7" fill="#d6dce1"/></pattern>
+    <marker id="arrow" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#294c73"/></marker>
+    <marker id="arrowAccent" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#ef6847"/></marker>
+    <style>
+      .eyebrow{font:600 25px Consolas,monospace;letter-spacing:5px;fill:#31577f}.headline{font:500 68px Georgia,serif;letter-spacing:-2px;fill:#142a45}.dek{font:28px Arial,sans-serif;fill:#49627f}.step{font:700 22px Consolas,monospace;letter-spacing:2px;fill:#31577f}.lane{font:600 28px Consolas,monospace;letter-spacing:5px;fill:#31577f}.nodeTitle{font:700 29px Arial,sans-serif;fill:#172b44}.nodeBody{font:22px Consolas,monospace;fill:#607286}.tag{font:700 18px Consolas,monospace;letter-spacing:2px;fill:#31577f}.flowLabel{font:600 20px Consolas,monospace;letter-spacing:2px;fill:#31577f}.cardTitle{font:700 27px Arial,sans-serif;fill:#172b44}.cardLabel{font:22px Arial,sans-serif;fill:#607286}.cardValue{font:700 22px Consolas,monospace;fill:#172b44}
+    </style>
+  </defs>
+  <rect width="2560" height="1440" fill="#f5f3ed"/>
+  <text x="180" y="105" class="eyebrow">EVIDENCE FLOW · ADEGUARD</text>
+  <text x="180" y="185" class="headline">Reports → evidence → grounded answers</text>
+  <text x="180" y="240" class="dek">Semantic retrieval and graph context converge before the local model is allowed to answer.</text>
+
+  <g transform="translate(570 300)">
+    <g transform="translate(0)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">01</text><text x="43" y="72" text-anchor="middle" class="step">INGEST</text></g>
+    <g transform="translate(350)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">02</text><text x="43" y="72" text-anchor="middle" class="step">EMBED</text></g>
+    <g transform="translate(700)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">03</text><text x="43" y="72" text-anchor="middle" class="step">GRAPH</text></g>
+    <g transform="translate(1050)"><rect width="86" height="40" rx="20" fill="#ffe1d7"/><text x="43" y="27" text-anchor="middle" class="step" style="fill:#ef6847">04</text><text x="43" y="72" text-anchor="middle" class="step" style="fill:#ef6847">RETRIEVE</text></g>
+    <g transform="translate(1400)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">05</text><text x="43" y="72" text-anchor="middle" class="step">GENERATE</text></g>
+    <g transform="translate(1750)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">06</text><text x="43" y="72" text-anchor="middle" class="step">GUARD</text></g>
+  </g>
+
+  <rect x="180" y="405" width="2200" height="375" fill="#eef0f1" opacity=".72"/>
+  <rect x="180" y="780" width="2200" height="305" fill="url(#dots)" opacity=".68"/>
+  <path d="M180 405H2380M180 780H2380M180 1085H2380M500 405V1085" stroke="#c5ccd3" stroke-width="2"/>
+  <text x="330" y="560" text-anchor="middle" class="lane"><tspan x="330">INDEX</tspan><tspan x="330" dy="44">BUILD</tspan></text>
+  <text x="330" y="900" text-anchor="middle" class="lane"><tspan x="330">QUERY</tspan><tspan x="330" dy="44">PATH</tspan></text>
+
+  <g transform="translate(550 520)">
+    <rect width="300" height="170" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="64" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">DATA</text>
+    <text x="150" y="85" text-anchor="middle" class="nodeTitle">VAERS Reports</text>
+    <text x="150" y="128" text-anchor="middle" class="nodeBody">4,000+ unstructured</text>
+    <text x="150" y="160" text-anchor="middle" class="nodeBody">adverse-event records</text>
+  </g>
+
+  <g transform="translate(930 430)">
+    <rect width="300" height="160" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">NLP</text>
+    <text x="150" y="83" text-anchor="middle" class="nodeTitle">Sentence-BERT</text>
+    <text x="150" y="126" text-anchor="middle" class="nodeBody">semantic embeddings</text>
+  </g>
+  <g transform="translate(930 620)">
+    <rect width="300" height="130" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">KG</text>
+    <text x="150" y="82" text-anchor="middle" class="nodeTitle">Graph Build</text>
+    <text x="150" y="115" text-anchor="middle" class="nodeBody">5 entity types</text>
+  </g>
+  <g transform="translate(1270 430)">
+    <rect width="300" height="160" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">IDX</text>
+    <text x="150" y="83" text-anchor="middle" class="nodeTitle">FAISS Index</text>
+    <text x="150" y="126" text-anchor="middle" class="nodeBody">semantic similarity</text>
+  </g>
+  <g transform="translate(1270 620)">
+    <rect width="300" height="130" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">DB</text>
+    <text x="150" y="82" text-anchor="middle" class="nodeTitle">Neo4j Graph</text>
+    <text x="150" y="115" text-anchor="middle" class="nodeBody">symptom co-occurrence</text>
+  </g>
+
+  <g transform="translate(550 845)">
+    <rect width="300" height="150" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">YOU</text>
+    <text x="150" y="82" text-anchor="middle" class="nodeTitle">User Question</text>
+    <text x="150" y="122" text-anchor="middle" class="nodeBody">symptom relationship</text>
+  </g>
+  <g transform="translate(930 845)">
+    <rect width="300" height="150" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">NLP</text>
+    <text x="150" y="82" text-anchor="middle" class="nodeTitle">Query Encoding</text>
+    <text x="150" y="122" text-anchor="middle" class="nodeBody">Sentence-BERT</text>
+  </g>
+
+  <g transform="translate(1660 540)">
+    <rect width="330" height="220" rx="12" fill="#fff7f2" stroke="#ef6847" stroke-width="4"/>
+    <rect x="22" y="22" width="74" height="30" rx="5" fill="#ffe0d5"/><text x="34" y="43" class="tag" style="fill:#ef6847">CORE</text>
+    <text x="165" y="91" text-anchor="middle" class="nodeTitle">Evidence Retrieval</text>
+    <text x="165" y="137" text-anchor="middle" class="nodeBody">FAISS matches</text>
+    <text x="165" y="173" text-anchor="middle" class="nodeBody">+ graph relationships</text>
+    <text x="165" y="205" text-anchor="middle" class="nodeBody">retrieved reports only</text>
+  </g>
+  <g transform="translate(2050 540)">
+    <rect width="330" height="180" rx="12" fill="#fdfcf8" stroke="#8796a8" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="34" y="43" class="tag">LLM</text>
+    <text x="165" y="91" text-anchor="middle" class="nodeTitle">Local LLaMA 3.2</text>
+    <text x="165" y="137" text-anchor="middle" class="nodeBody">constrained to evidence</text>
+  </g>
+  <g transform="translate(2050 825)">
+    <rect width="330" height="180" rx="12" fill="#fdfcf8" stroke="#8796a8" stroke-width="3"/>
+    <text x="165" y="50" text-anchor="middle" class="nodeTitle">Answer Gate</text>
+    <rect x="25" y="76" width="280" height="38" rx="19" fill="#e4efe8"/><text x="165" y="102" text-anchor="middle" class="nodeBody" style="fill:#35704a">Grounded answer</text>
+    <rect x="25" y="126" width="280" height="38" rx="19" fill="#ffe3d9"/><text x="165" y="152" text-anchor="middle" class="nodeBody" style="fill:#b44b32">Refuse outside context</text>
+  </g>
+
+  <path d="M850 590H890V510H930" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M890 590V685H930" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1230 510H1270M1230 685H1270" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1570 510H1620V600H1660" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1570 685H1660" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M850 920H930" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1230 920H1605V735H1660" fill="none" stroke="#ef6847" stroke-width="5" marker-end="url(#arrowAccent)"/>
+  <path d="M1990 650H2050" fill="none" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+  <path d="M2215 720V825" fill="none" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+  <text x="1370" y="900" class="flowLabel" style="fill:#ef6847">SEMANTIC QUERY</text>
+
+  <g transform="translate(180 1145)">
+    <rect width="680" height="220" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#31577f"/><text x="56" y="51" class="cardTitle">Source</text>
+    <text x="30" y="112" class="cardLabel">VAERS reports</text><text x="650" y="112" text-anchor="end" class="cardValue">4,000+</text>
+    <text x="30" y="168" class="cardLabel">Format</text><text x="650" y="168" text-anchor="end" class="cardValue">unstructured text</text>
+  </g>
+  <g transform="translate(940 1145)">
+    <rect width="680" height="220" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#ef6847"/><text x="56" y="51" class="cardTitle">Retrieval</text>
+    <text x="30" y="112" class="cardLabel">Semantic index</text><text x="650" y="112" text-anchor="end" class="cardValue">Sentence-BERT / FAISS</text>
+    <text x="30" y="168" class="cardLabel">Knowledge graph</text><text x="650" y="168" text-anchor="end" class="cardValue">Neo4j · 5 entity types</text>
+  </g>
+  <g transform="translate(1700 1145)">
+    <rect width="680" height="220" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#4c8b63"/><text x="56" y="51" class="cardTitle">Answer Policy</text>
+    <text x="30" y="112" class="cardLabel">Model</text><text x="650" y="112" text-anchor="end" class="cardValue">local LLaMA 3.2</text>
+    <text x="30" y="168" class="cardLabel">Outside evidence</text><text x="650" y="168" text-anchor="end" class="cardValue">refuse</text>
+  </g>
+</svg>

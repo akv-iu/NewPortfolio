@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import { test } from "node:test";
 
 import { isVideo, spansFullRow } from "../lib/layout.ts";
@@ -26,4 +27,22 @@ test("the grid never ends on an empty cell", () => {
   );
   // No projects beyond the featured one: nothing to place.
   assert.equal(spansFullRow(0, 0), false);
+});
+
+test("project diagrams stay full-size vectors", async () => {
+  for (const file of [
+    "zero-trust-mcp-gateway.svg",
+    "adeguard.svg",
+    "twinmind-v2.svg",
+    "kaggriculture-evidence-loop.svg",
+  ]) {
+    const svg = await readFile(new URL(`../public/projects/${file}`, import.meta.url), "utf8");
+    assert.match(svg, /width="2560"/);
+    assert.match(svg, /height="1440"/);
+    assert.match(svg, /viewBox="0 0 2560 1440"/);
+    assert.doesNotMatch(svg, /<image\b/, `${file} must not embed a raster image`);
+    for (const marker of svg.matchAll(/<marker\b[^>]*>/g)) {
+      assert.match(marker[0], /markerUnits="userSpaceOnUse"/, `${file} has a stroke-scaled arrow`);
+    }
+  }
 });

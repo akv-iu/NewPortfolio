@@ -88,7 +88,7 @@ export const hero = {
  *    media: "adeguard.mp4"     a video (autoplays muted, loops)
  *    media: ""                 shows a labelled empty slot instead
  *
- *  Supported: .png .jpg .jpeg .webp .avif .gif .mp4 .webm .mov
+ *  Supported: .svg .png .jpg .jpeg .webp .avif .gif .mp4 .webm .mov
  *
  *  The FIRST project renders large. Reorder the array to change which.
  * ---------------------------------------------------------------------- */
@@ -122,7 +122,7 @@ export const projects: Project[] = [
       "0 prohibited side effects across the corpus, versus 37 under a broken-enforcer control",
       "Side-effect oracle passing 63/66 scenarios with zero false-pass indeterminates",
     ],
-    media: "zero-trust-mcp-gateway.png",
+    media: "zero-trust-mcp-gateway.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu/Zero-Trust-MCP-Gateway" }],
   },
   {
@@ -138,7 +138,7 @@ export const projects: Project[] = [
       "Local LLaMA-3.2 pipeline, constrained to retrieved evidence",
       "Refuses to answer outside retrieved context rather than guessing",
     ],
-    media: "",
+    media: "adeguard.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu" }],
   },
   {
@@ -153,7 +153,7 @@ export const projects: Project[] = [
       "Suggestion prompt size held stable at ~4-7 KB from batch 5 onward regardless of session length",
       "Switched from MediaRecorder timeslice mode to 6-second record-stop-restart cycles after timeslice caused transcript gaps under load, with suffix/prefix dedup across chunk boundaries",
     ],
-    media: "twinmind-v2.png",
+    media: "twinmind-v2.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu/TwinMind-v2.0" } , { label: "Website", href: "https://twinmind-v2.0.vercel.app/" }],
     
   },
@@ -169,7 +169,7 @@ export const projects: Project[] = [
       "Backtest gate calibrated against 4 known-outcome historical releases correctly failed the identical no-op and a known-regressing release (+$795 median mirror, below the $1,000 pass bar), correctly passed both known-good releases",
       "108 historical attempts indexed into a durable ledger so the model never re-proposes an idea whose recorded retry condition isn't yet satisfied",
     ],
-    media: "kaggriculture-evidence-loop.png",
+    media: "kaggriculture-evidence-loop.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu/kaggleComp" }],
   },
 ];

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">TwinMind live audio pipeline</title>
+  <desc id="desc">Audio travels from browser recording through transcription, meeting classification, suggestions, summarization, and chat.</desc>
+  <defs>
+    <pattern id="dots" width="34" height="34" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.7" fill="#d6dce1"/></pattern>
+    <marker id="arrow" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#294c73"/></marker>
+    <marker id="arrowAccent" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#ef6847"/></marker>
+    <style>
+      .eyebrow{font:600 25px Consolas,monospace;letter-spacing:5px;fill:#31577f}.headline{font:500 68px Georgia,serif;letter-spacing:-2px;fill:#142a45}.dek{font:28px Arial,sans-serif;fill:#49627f}.step{font:700 22px Consolas,monospace;letter-spacing:2px;fill:#31577f}.lane{font:600 28px Consolas,monospace;letter-spacing:5px;fill:#31577f}.nodeTitle{font:700 29px Arial,sans-serif;fill:#172b44}.nodeBody{font:22px Consolas,monospace;fill:#607286}.tag{font:700 18px Consolas,monospace;letter-spacing:2px;fill:#31577f}.legend{font:22px Arial,sans-serif;fill:#566b82}.legendLabel{font:600 22px Consolas,monospace;letter-spacing:3px;fill:#31577f}
+    </style>
+  </defs>
+  <rect width="2560" height="1440" fill="#f5f3ed"/>
+  <text x="180" y="105" class="eyebrow">DATA FLOW · DIAGRAM DESIGN</text>
+  <text x="180" y="185" class="headline">Audio → transcript → suggestions pipeline</text>
+  <text x="180" y="240" class="dek">Role-scoped view of what runs in the browser, the Next.js API layer, and every payload handoff.</text>
+
+  <g transform="translate(610 300)">
+    <g transform="translate(0)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">01</text><text x="43" y="72" text-anchor="middle" class="step">RECORD</text></g>
+    <g transform="translate(340)"><rect width="86" height="40" rx="20" fill="#ffe1d7"/><text x="43" y="27" text-anchor="middle" class="step" style="fill:#ef6847">02</text><text x="43" y="72" text-anchor="middle" class="step" style="fill:#ef6847">TRANSCRIBE</text></g>
+    <g transform="translate(680)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">03</text><text x="43" y="72" text-anchor="middle" class="step">CLASSIFY</text></g>
+    <g transform="translate(1020)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">04</text><text x="43" y="72" text-anchor="middle" class="step">SUGGEST</text></g>
+    <g transform="translate(1360)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">05</text><text x="43" y="72" text-anchor="middle" class="step">SUMMARIZE</text></g>
+    <g transform="translate(1700)"><rect width="86" height="40" rx="20" fill="#dde2e6"/><text x="43" y="27" text-anchor="middle" class="step">06</text><text x="43" y="72" text-anchor="middle" class="step">CHAT</text></g>
+  </g>
+
+  <rect x="180" y="405" width="2200" height="300" fill="#eef0f1" opacity=".72"/>
+  <rect x="180" y="705" width="2200" height="360" fill="url(#dots)" opacity=".7"/>
+  <path d="M180 405H2380M180 705H2380M180 1065H2380M500 405V1065" stroke="#c5ccd3" stroke-width="2"/>
+  <text x="330" y="530" text-anchor="middle" class="lane"><tspan x="330">BROWSER</tspan><tspan x="330" dy="44">CLIENT</tspan></text>
+  <text x="330" y="830" text-anchor="middle" class="lane"><tspan x="330">NEXT.JS</tspan><tspan x="330" dy="44">SERVER</tspan></text>
+
+  <g transform="translate(550 470)">
+    <rect width="310" height="170" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="35" y="43" class="tag">APP</text>
+    <text x="155" y="82" text-anchor="middle" class="nodeTitle">Audio Capture</text>
+    <text x="155" y="123" text-anchor="middle" class="nodeBody">6s cycles · retry</text>
+    <text x="155" y="153" text-anchor="middle" class="nodeBody">useAudioRecorder</text>
+  </g>
+
+  <path d="M860 555H930Q960 555 960 585V750" fill="none" stroke="#ef6847" stroke-width="5" marker-end="url(#arrowAccent)"/>
+  <text x="885" y="530" class="step" style="fill:#ef6847">AUDIO CHUNK</text>
+
+  <g transform="translate(870 760)">
+    <rect width="300" height="190" rx="12" fill="#fff7f2" stroke="#ef6847" stroke-width="4"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#ffe0d5"/><text x="36" y="43" class="tag" style="fill:#ef6847">API</text>
+    <text x="150" y="85" text-anchor="middle" class="nodeTitle">Transcribe</text>
+    <text x="150" y="128" text-anchor="middle" class="nodeBody">whisper-large-v3</text>
+    <text x="150" y="162" text-anchor="middle" class="nodeBody">25s timeout · 60/min</text>
+  </g>
+  <g transform="translate(1200 760)">
+    <rect width="280" height="190" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="36" y="43" class="tag">API</text>
+    <text x="140" y="85" text-anchor="middle" class="nodeTitle">Classify Meeting</text>
+    <text x="140" y="128" text-anchor="middle" class="nodeBody">9 meeting types</text>
+    <text x="140" y="162" text-anchor="middle" class="nodeBody">batch 3 · 3/min</text>
+  </g>
+  <g transform="translate(1510 760)">
+    <rect width="280" height="190" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="36" y="43" class="tag">API</text>
+    <text x="140" y="85" text-anchor="middle" class="nodeTitle">Suggest</text>
+    <text x="140" y="128" text-anchor="middle" class="nodeBody">checkpointed delta</text>
+    <text x="140" y="162" text-anchor="middle" class="nodeBody">~30s · 10/min</text>
+  </g>
+  <g transform="translate(1820 760)">
+    <rect width="280" height="190" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="36" y="43" class="tag">API</text>
+    <text x="140" y="85" text-anchor="middle" class="nodeTitle">Summarize</text>
+    <text x="140" y="128" text-anchor="middle" class="nodeBody">800-char rolling cap</text>
+    <text x="140" y="162" text-anchor="middle" class="nodeBody">every 4th batch</text>
+  </g>
+  <g transform="translate(2130 760)">
+    <rect width="250" height="190" rx="12" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="22" y="22" width="58" height="30" rx="5" fill="#e5e8eb"/><text x="36" y="43" class="tag">API</text>
+    <text x="125" y="85" text-anchor="middle" class="nodeTitle">Chat</text>
+    <text x="125" y="128" text-anchor="middle" class="nodeBody">SSE streaming</text>
+    <text x="125" y="162" text-anchor="middle" class="nodeBody">full context · 30/min</text>
+  </g>
+  <path d="M1170 855H1200M1480 855H1510M1790 855H1820M2100 855H2130" stroke="#294c73" stroke-width="5" marker-end="url(#arrow)"/>
+
+  <g transform="translate(500 1130)">
+    <text x="0" y="25" class="legendLabel">STEPS</text>
+    <g transform="translate(170 0)"><rect width="74" height="38" rx="19" fill="#dde2e6"/><text x="37" y="26" text-anchor="middle" class="step">01</text><text x="95" y="27" class="legend">Record</text></g>
+    <g transform="translate(390 0)"><rect width="74" height="38" rx="19" fill="#ffe1d7"/><text x="37" y="26" text-anchor="middle" class="step" style="fill:#ef6847">02</text><text x="95" y="27" class="legend">Transcribe</text></g>
+    <g transform="translate(680 0)"><rect width="74" height="38" rx="19" fill="#dde2e6"/><text x="37" y="26" text-anchor="middle" class="step">03</text><text x="95" y="27" class="legend">Classify</text></g>
+    <g transform="translate(940 0)"><rect width="74" height="38" rx="19" fill="#dde2e6"/><text x="37" y="26" text-anchor="middle" class="step">04</text><text x="95" y="27" class="legend">Suggest</text></g>
+    <g transform="translate(1190 0)"><rect width="74" height="38" rx="19" fill="#dde2e6"/><text x="37" y="26" text-anchor="middle" class="step">05</text><text x="95" y="27" class="legend">Summarize</text></g>
+    <g transform="translate(1480 0)"><rect width="74" height="38" rx="19" fill="#dde2e6"/><text x="37" y="26" text-anchor="middle" class="step">06</text><text x="95" y="27" class="legend">Chat</text></g>
+    <text x="0" y="105" class="legendLabel">DATA TYPE</text>
+    <circle cx="190" cy="98" r="13" fill="#4c8b63"/><text x="220" y="105" class="legend">Audio stream</text>
+    <circle cx="500" cy="98" r="13" fill="#c08d45"/><text x="530" y="105" class="legend">Transcript text</text>
+    <circle cx="870" cy="98" r="13" fill="#a45d47"/><text x="900" y="105" class="legend">Cards / summary</text>
+    <text x="0" y="185" class="legendLabel">FLOW</text>
+    <path d="M170 178H240" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/><text x="265" y="185" class="legend">Data handoff</text>
+    <path d="M550 178H620" stroke="#ef6847" stroke-width="4" marker-end="url(#arrowAccent)"/><text x="645" y="185" class="legend">Focal handoff</text>
+    <path d="M990 178H1060" stroke="#294c73" stroke-width="3" stroke-dasharray="10 8" marker-end="url(#arrow)"/><text x="1085" y="185" class="legend">Periodic checkpoint</text>
+  </g>
+</svg>

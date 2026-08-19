@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2560" height="1440" viewBox="0 0 2560 1440" role="img" aria-labelledby="title desc">
+  <title id="title">Zero-Trust MCP Gateway architecture</title>
+  <desc id="desc">A client reaches an MCP server through one policy-enforced gateway, with OPA authorization and an append-only audit trail.</desc>
+  <defs>
+    <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.6" fill="#d9dee3"/></pattern>
+    <marker id="arrow" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#294c73"/></marker>
+    <marker id="arrowAccent" markerWidth="20" markerHeight="20" refX="18" refY="10" markerUnits="userSpaceOnUse" orient="auto"><path d="M0 1 19 10 0 19Z" fill="#ef6847"/></marker>
+    <style>
+      .eyebrow{font:600 25px Consolas,monospace;letter-spacing:5px;fill:#31577f}.headline{font:500 68px Georgia,serif;letter-spacing:-2px;fill:#142a45}.dek{font:28px Arial,sans-serif;fill:#49627f}.nodeTitle{font:700 30px Arial,sans-serif;fill:#172b44}.nodeBody{font:23px Consolas,monospace;fill:#566b82}.tag{font:700 18px Consolas,monospace;letter-spacing:2px;fill:#31577f}.label{font:600 21px Consolas,monospace;letter-spacing:2px;fill:#31577f}.cardTitle{font:700 27px Arial,sans-serif;fill:#172b44}.cardLabel{font:22px Arial,sans-serif;fill:#607286}.cardValue{font:700 22px Consolas,monospace;fill:#172b44}
+    </style>
+  </defs>
+  <rect width="2560" height="1440" fill="#f5f3ed"/>
+  <text x="180" y="105" class="eyebrow">ARCHITECTURE · ZERO-TRUST MCP GATEWAY</text>
+  <text x="180" y="185" class="headline">One Enforcement Point, Three Processes</text>
+  <text x="180" y="240" class="dek">Every tools/call crosses an eight-stage policy pipeline before any side effect can occur.</text>
+
+  <rect x="180" y="315" width="2200" height="710" rx="4" fill="url(#dots)" opacity=".65"/>
+  <rect x="975" y="540" width="610" height="405" rx="12" fill="#e9edef" opacity=".72"/>
+  <text x="1005" y="575" class="label" opacity=".7">GATEWAY PROCESS · PYTHON</text>
+
+  <g>
+    <rect x="200" y="650" width="330" height="170" rx="10" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="222" y="672" width="58" height="28" rx="4" fill="#e3e7eb" stroke="#aab4bf"/>
+    <text x="236" y="692" class="tag">MCP</text>
+    <text x="365" y="740" text-anchor="middle" class="nodeTitle">MCP Client</text>
+    <text x="365" y="778" text-anchor="middle" class="nodeBody">tools/call · HTTP</text>
+  </g>
+  <g>
+    <rect x="625" y="650" width="300" height="170" rx="10" fill="#fdfcf8" stroke="#7f8fa1" stroke-width="3"/>
+    <rect x="647" y="672" width="48" height="28" rx="4" fill="#eef0f2" stroke="#aab4bf"/>
+    <text x="659" y="692" class="tag">01</text>
+    <text x="775" y="740" text-anchor="middle" class="nodeTitle">Edge</text>
+    <text x="775" y="778" text-anchor="middle" class="nodeBody">ASGI · uvicorn</text>
+  </g>
+  <g>
+    <rect x="1030" y="625" width="500" height="220" rx="12" fill="#fff7f2" stroke="#ef6847" stroke-width="4"/>
+    <rect x="1054" y="650" width="72" height="30" rx="4" fill="#ffe4da" stroke="#ef6847"/>
+    <text x="1066" y="671" class="tag" style="fill:#ef6847">CORE</text>
+    <text x="1280" y="725" text-anchor="middle" class="nodeTitle">Gateway Pipeline</text>
+    <text x="1280" y="766" text-anchor="middle" class="nodeBody">02 protocol → 08 response</text>
+    <text x="1280" y="802" text-anchor="middle" class="nodeBody">8 fixed stages · deny by default</text>
+  </g>
+  <g>
+    <rect x="1635" y="650" width="350" height="170" rx="10" fill="#fdfcf8" stroke="#9eabba" stroke-width="3"/>
+    <rect x="1657" y="672" width="58" height="28" rx="4" fill="#e3e7eb" stroke="#aab4bf"/>
+    <text x="1671" y="692" class="tag">MCP</text>
+    <text x="1810" y="740" text-anchor="middle" class="nodeTitle">MCP Server</text>
+    <text x="1810" y="778" text-anchor="middle" class="nodeBody">child process · stdio</text>
+  </g>
+  <g>
+    <rect x="1115" y="350" width="330" height="155" rx="10" fill="#fdfcf8" stroke="#8796a8" stroke-width="3"/>
+    <rect x="1137" y="372" width="58" height="28" rx="4" fill="#e3e7eb" stroke="#aab4bf"/>
+    <text x="1152" y="392" class="tag">OPA</text>
+    <text x="1280" y="442" text-anchor="middle" class="nodeTitle">OPA Sidecar</text>
+    <text x="1280" y="480" text-anchor="middle" class="nodeBody">127.0.0.1:8181</text>
+  </g>
+  <g>
+    <rect x="1030" y="900" width="500" height="125" rx="10" fill="#fdfcf8" stroke="#8796a8" stroke-width="3"/>
+    <text x="1280" y="953" text-anchor="middle" class="nodeTitle">Audit Trail</text>
+    <text x="1280" y="991" text-anchor="middle" class="nodeBody">append-only · terminal action</text>
+  </g>
+
+  <path d="M530 720H625" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M925 735H1030" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1530 735H1635" fill="none" stroke="#294c73" stroke-width="4" marker-end="url(#arrow)"/>
+  <path d="M1280 625V505" fill="none" stroke="#294c73" stroke-width="4" stroke-dasharray="10 10" marker-end="url(#arrow)"/>
+  <path d="M1280 845V900" fill="none" stroke="#ef6847" stroke-width="4" marker-end="url(#arrowAccent)"/>
+  <path d="M625 782H530" fill="none" stroke="#31577f" stroke-width="3" stroke-dasharray="11 10" marker-end="url(#arrow)"/>
+  <text x="560" y="700" class="label">HTTPS</text>
+  <text x="1410" y="580" class="label">REGO QUERY</text>
+  <text x="1325" y="882" class="label">EVERY STAGE</text>
+
+  <g transform="translate(180 1085)">
+    <rect width="680" height="260" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#ef6847"/><text x="56" y="51" class="cardTitle">Pipeline</text>
+    <text x="30" y="102" class="cardLabel">Fixed stages</text><text x="650" y="102" text-anchor="end" class="cardValue">8</text>
+    <text x="30" y="146" class="cardLabel">Modules</text><text x="650" y="146" text-anchor="end" class="cardValue">21</text>
+    <text x="30" y="190" class="cardLabel">Lines of Python</text><text x="650" y="190" text-anchor="end" class="cardValue">5,886</text>
+    <text x="30" y="234" class="cardLabel">Largest module</text><text x="650" y="234" text-anchor="end" class="cardValue">registry.py · 633</text>
+  </g>
+  <g transform="translate(940 1085)">
+    <rect width="680" height="260" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#172b44"/><text x="56" y="51" class="cardTitle">Policy &amp; Tests</text>
+    <text x="30" y="102" class="cardLabel">Rego policy</text><text x="650" y="102" text-anchor="end" class="cardValue">321 lines</text>
+    <text x="30" y="146" class="cardLabel">OPA tests</text><text x="650" y="146" text-anchor="end" class="cardValue">46</text>
+    <text x="30" y="190" class="cardLabel">Bytes collected</text><text x="650" y="190" text-anchor="end" class="cardValue">773</text>
+    <text x="30" y="234" class="cardLabel">OPA version pin</text><text x="650" y="234" text-anchor="end" class="cardValue">1.x</text>
+  </g>
+  <g transform="translate(1700 1085)">
+    <rect width="680" height="260" rx="10" fill="#fdfcf8" stroke="#c5ccd3" stroke-width="2"/>
+    <circle cx="34" cy="42" r="7" fill="#31577f"/><text x="56" y="51" class="cardTitle">Evidence</text>
+    <text x="30" y="102" class="cardLabel">Attack corpus</text><text x="650" y="102" text-anchor="end" class="cardValue">118 rows · 9 files</text>
+    <text x="30" y="146" class="cardLabel">Full-profile score</text><text x="650" y="146" text-anchor="end" class="cardValue">115 PASS / 3 skipped</text>
+    <text x="30" y="190" class="cardLabel">Audit joins</text><text x="650" y="190" text-anchor="end" class="cardValue">113 / 113</text>
+    <text x="30" y="234" class="cardLabel">Generated profile</text><text x="650" y="234" text-anchor="end" class="cardValue">2,500 / 2,500</text>
+  </g>
+</svg>
