@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* ============================================================================
+ *  DESIGN TOKENS - the other file worth editing.
+ *
+ *  There is deliberately NO accent color. Emerald-on-zinc is the default every
+ *  AI-built dev portfolio ships with, and a palette with no color in it cannot
+ *  look generic. Interaction is signalled by contrast, rule weight and motion
+ *  instead. If you add an accent later, add exactly one.
+ *
+ *  Warm paper, black ink. The greys carry a red/yellow tint rather than the
+ *  cool zinc default — warm neutrals read as print, cool neutrals read as
+ *  dashboard, and a flat white reads as glare.
+ *
+ *  NOT #fff, and not a neutral grey either: both are too sharp behind the
+ *  hero's line-art animation. The page also sits a step below white so
+ *  raised surfaces have somewhere to go.
+ *
+ *  The hero video's SVG filter lands its card stock on this exact value, per
+ *  channel — change --color-bg and the `slope` values in components/hero.tsx
+ *  have to move with it, or the drawing grows a visible box.
+ *
+ *  Radius rule: almost nothing is rounded. Media and buttons only.
+ * ========================================================================== */
+@theme {
+  --color-bg: #f5f3ed;
+  --color-raised: #fdfcf8;
+  --color-line: #dcd7cb;
+  --color-line-soft: #e9e5db;
+
+  --color-fg: #14120d;
+  --color-muted: #57534a;
+  --color-faint: #8a857a;
+
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+
+  --radius-media: 2px;
+
+  /* Emil Kowalski's curves. The CSS built-ins are too weak to read as
+     intentional. Never `ease-in` on UI: it delays the first frame, which is
+     exactly the frame the user is watching. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* ---------------------------------------------------------------------------
+ *  Base
+ * ------------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+  -webkit-text-size-adjust: 100%;
+
+  /* The layout was drawn at ~133% browser zoom, which is just a bigger root
+     font size — everything here is rem, so scaling the root scales type,
+     spacing, gaps and the container together, exactly like zooming. Ramps in
+     above ~1470px and tops out at 1.31x by 1920px; a laptop is unaffected.
+     Bounds are in rem, not px, so a user who has raised their browser's
+     default font size keeps that increase. */
+  font-size: clamp(1rem, 1.09vw, 1.3125rem);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background-color: var(--color-fg);
+  color: var(--color-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-fg);
+  outline-offset: 3px;
+}
+
+/* Dates, durations and counts line up in columns only with tabular figures. */
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------------------------------------------------------------------------
+ *  Type
+ * ------------------------------------------------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  /* Descender clearance, since headings contain g, y, p. */
+  padding-bottom: 0.06em;
+  text-wrap: balance;
+}
+
+/* Stops a single word stranded on the last line of a paragraph. */
+p {
+  text-wrap: pretty;
+}
+
+.rule {
+  height: 1px;
+  background-color: var(--color-line);
+}
+
+/* ---------------------------------------------------------------------------
+ *  Film grain.
+ *
+ *  Fixed and pointer-events-none so it never repaints during scroll. A flat
+ *  digital surface is the thing that reads as cheap; this costs one composited
+ *  layer and fixes it.
+ * ------------------------------------------------------------------------ */
+.grain::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------------------------------------------------------------------------
+ *  Entrance animations.
+ *
+ *  CSS, not JS: they start painting before hydration, they run off the main
+ *  thread, and the reduced-motion block at the bottom neutralises them without
+ *  any React branching. Delays are set inline per element.
+ * ------------------------------------------------------------------------ */
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes mask-up {
+  from {
+    transform: translateY(102%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Wipes the image open from the bottom edge rather than fading it in.
+   Nothing in the real world fades into existence. */
+@keyframes wipe-up {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.6s var(--ease-out) both;
+}
+
+.mask-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.09em;
+  margin-bottom: -0.09em;
+}
+
+.mask-line > span {
+  display: block;
+  animation: mask-up 0.9s var(--ease-out) both;
+}
+
+.wipe-up {
+  animation: wipe-up 1.1s var(--ease-in-out) both;
+}
+
+/* ---------------------------------------------------------------------------
+ *  Reduced motion.
+ *
+ *  Not zero animation: opacity and color still help comprehension. What goes
+ *  is movement. `both` fill means a near-zero duration lands on the end frame,
+ *  so nothing is left stranded mid-animation.
+ * ------------------------------------------------------------------------ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
