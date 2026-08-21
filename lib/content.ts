@@ -272,5 +272,5 @@ export const stack = [
  * ---------------------------------------------------------------------- */
 export const contact = {
   label: "Get in touch",
-  body: "Available May 2026 for software engineering, applied AI engineering, and forward-deployed engineering roles.",
+  body: "",
 };
