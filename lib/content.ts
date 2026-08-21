@@ -125,22 +125,7 @@ export const projects: Project[] = [
     media: "zero-trust-mcp-gateway.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu/Zero-Trust-MCP-Gateway" }],
   },
-  {
-    slug: "adeguard",
-    title: "ADEGuard",
-    period: "2026",
-    kind: "Graduate capstone",
-    stack: ["Python", "Neo4j", "FAISS", "LLaMA 3.2", "Sentence-BERT", "Streamlit"],
-    summary:
-      "Semantic search across 4,000+ unstructured VAERS adverse event reports, joined to a Neo4j knowledge graph so symptom relationships can be queried rather than only matched. Every answer is grounded in the reports actually retrieved.",
-    highlights: [
-      "Knowledge graph of 5 entity types, modelling symptom co-occurrence with frequency aggregation",
-      "Local LLaMA-3.2 pipeline, constrained to retrieved evidence",
-      "Refuses to answer outside retrieved context rather than guessing",
-    ],
-    media: "adeguard.svg",
-    links: [{ label: "GitHub", href: "https://github.com/akv-iu" }],
-  },
+  
   {
     slug: "twinmind-v2",
     title: "TwinMind v2",
@@ -156,6 +141,22 @@ export const projects: Project[] = [
     media: "twinmind-v2.svg",
     links: [{ label: "GitHub", href: "https://github.com/akv-iu/TwinMind-v2.0" } , { label: "Website", href: "https://twinmind-v2.0.vercel.app/" }],
     
+  },
+  {
+    slug: "adeguard",
+    title: "ADEGuard",
+    period: "2026",
+    kind: "Graduate capstone",
+    stack: ["Python", "Neo4j", "FAISS", "LLaMA 3.2", "Sentence-BERT", "Streamlit"],
+    summary:
+      "Semantic search across 4,000+ unstructured VAERS adverse event reports, joined to a Neo4j knowledge graph so symptom relationships can be queried rather than only matched. Every answer is grounded in the reports actually retrieved.",
+    highlights: [
+      "Knowledge graph of 5 entity types, modelling symptom co-occurrence with frequency aggregation",
+      "Local LLaMA-3.2 pipeline, constrained to retrieved evidence",
+      "Refuses to answer outside retrieved context rather than guessing",
+    ],
+    media: "adeguard.svg",
+    links: [{ label: "GitHub", href: "https://github.com/akv-iu" }],
   },
   {
     slug: "kaggriculture-evidence-loop",
