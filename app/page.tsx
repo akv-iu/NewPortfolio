@@ -4,6 +4,7 @@ import { Work } from "@/components/work";
 import { Experience } from "@/components/experience";
 import { StackSection } from "@/components/stack-section";
 import { Contact, Footer } from "@/components/contact";
+import { Analytics } from "@vercel/analytics/next";
 
 /**
  * One page, five sections, anchor navigation. Every string on it comes from
@@ -21,6 +22,7 @@ export default function Page() {
         <Contact />
       </main>
       <Footer />
+      <Analytics />
     </>
   );
 }
